@@ -1,0 +1,5 @@
+<xsd:schema 
+  xmlns:xsd=""
+  xmlns:sql="urn:schemas-microsoft-com:mapping-schema"
+  xmlns:tns="" 
+  targetNamespace="http://edu.chl.oleander/schema/customer" >
