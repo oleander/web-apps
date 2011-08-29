@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : simpleCustomerList.xml
+    Created on : den 29 augusti 2011, 10:23
+    Author     : linus
+    Description:
+        Purpose of the document follows.
+-->
+
+<simpleCustomerList len="123">
+    <simpleCustomer id="1">
+        <fname>Linus</fname>
+        <lname>Oleander</lname>
+        <age>23</age>
+        <address>Motgången</address>
+        <email>linus@oleander.nu</email>
+    </simpleCustomer>
+    
+    <simpleCustomer id="2">
+        <fname>Jesper</fname>
+        <lname>Josefsson</lname>
+        <age>25</age>
+        <address>Brahegatan 9</address>
+        <email>jesper.josefsson@gmail.com</email>
+    </simpleCustomer>
+</simpleCustomerList>
