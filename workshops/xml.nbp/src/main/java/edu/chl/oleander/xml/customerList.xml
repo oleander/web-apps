@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : customerList.xml
+    Created on : den 1 september 2011, 16:02
+    Author     : jesper
+    Description:
+        Purpose of the document follows.
+-->
+
+<cul:customerList  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:cul='http://edu.chl.jesjos/schema/customerList'
+   xmlns='http://edu.chl.jesjos/schema/customer'
+   xsi:schemaLocation='http://edu.chl.jesjos/schema/customerList file:/Users/jesper/Documents/wa/web-apps/workshops/xml.nbp/src/main/java/edu/chl/oleander/xml/customerList.xsd' len="2">
+    <customer id="1">
+        <fname>Linus</fname>
+        <lname>Oleander</lname>
+        <age>23</age>
+        <address>Motgången</address>
+        <email>linus@oleander.nu</email>
+    </customer>
+    
+    <customer id="2">
+        <fname>Jesper</fname>
+        <lname>Josefsson</lname>
+        <age>25</age>
+        <address>Brahegatan 9</address>
+        <email>jesper.josefsson@gmail.com</email>
+    </customer>
+</cul:customerList>

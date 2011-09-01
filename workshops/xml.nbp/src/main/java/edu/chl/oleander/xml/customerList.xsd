@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://edu.chl.jesjos/schema/customerList"
+    xmlns:tns="http://edu.chl.jesjos/schema/customerList"
+    xmlns:cu="http://edu.chl.jesjos/schema/customer"
+    elementFormDefault="qualified">
+    <xs:import id="cu" namespace="http://edu.chl.jesjos/schema/customer" schemaLocation="file:/Users/jesper/Documents/wa/web-apps/workshops/xml.nbp/src/main/java/edu/chl/oleander/xml/customer.xsd"/>
+    <xs:complexType name="CustomerList">
+        <xs:sequence>
+            <xs:element ref="cu:customer" minOccurs="0" maxOccurs="unbounded"/>
+        </xs:sequence>
+        <xs:attribute name="len" type="xs:integer" />
+    </xs:complexType>
+    <xs:element name="customerList" type="tns:CustomerList" />
+</xs:schema>

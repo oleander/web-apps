@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : customer.xml
+    Created on : den 1 september 2011, 15:38
+    Author     : jesper
+    Description:
+        Purpose of the document follows.
+-->
+
+<ns1:customer  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:ns1='http://edu.chl.jesjos/schema/customer'
+   xsi:schemaLocation='http://edu.chl.jesjos/schema/customer file:/Users/jesper/Documents/wa/web-apps/workshops/xml.nbp/src/main/java/edu/chl/oleander/xml/customer.xsd' id="">
+    <ns1:fname></ns1:fname>
+    <ns1:lname></ns1:lname>
+    <ns1:age>20</ns1:age>
+    <ns1:address></ns1:address>
+    <ns1:email>jesper.josefsson@gmail.com</ns1:email>
+
+</ns1:customer>
