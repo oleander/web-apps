@@ -12,5 +12,9 @@
    xmlns:ns1='http://edu.chl.jesjos/schema/customer'
    xsi:schemaLocation='http://edu.chl.jesjos/schema/customer file:/Users/linus/Documents/Projekt/DAT076/workshops/xml.nbp/src/main/java/edu/chl/oleander/xml/customer.xsd'>
 
-<fname>Linus</fname>
+   <ns1:fname>Linus</ns1:fname>
+   <ns1:lname>Oleander</ns1:lname>
+   <ns1:age>20</ns1:age>
+   <ns1:address>Motgangen</ns1:address>
+   <ns1:email>linus@oleander</ns1:email>
 </ns1:customer>

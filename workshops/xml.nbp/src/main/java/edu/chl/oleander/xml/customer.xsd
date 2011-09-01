@@ -43,5 +43,5 @@
         <xs:attribute name="id" type="xs:integer" />
     </xs:complexType>
     
-    <xs:element name="customer" type="Customer"/>
+    <xs:element name="customer" type="tns:Customer"/>
 </xs:schema>
