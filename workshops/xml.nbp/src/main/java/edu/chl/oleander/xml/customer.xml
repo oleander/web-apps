@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : customer.xml.xml
+    Created on : den 1 september 2011, 15:13
+    Author     : linus
+    Description:
+        Purpose of the document follows.
+-->
+
+<ns1:customer  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:ns1='http://edu.chl.jesjos/schema/customer'
+   xsi:schemaLocation='http://edu.chl.jesjos/schema/customer file:/Users/linus/Documents/Projekt/DAT076/workshops/xml.nbp/src/main/java/edu/chl/oleander/xml/customer.xsd'>
+
+<fname>Linus</fname>
+</ns1:customer>

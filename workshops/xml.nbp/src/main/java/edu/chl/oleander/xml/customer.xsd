@@ -5,27 +5,32 @@
     targetNamespace="http://edu.chl.jesjos/schema/customer"
     xmlns:tns="http://edu.chl.jesjos/schema/customer"
     elementFormDefault="qualified">
+        
     <xs:simpleType name="Name">
         <xs:restriction base="xs:string">
             <xs:maxLength value="100" />
         </xs:restriction>
     </xs:simpleType>
+    
     <xs:simpleType name="Email">
         <xs:restriction base="xs:string">
             <xs:minLength value="6" />
         </xs:restriction>
     </xs:simpleType>
+    
     <xs:simpleType name="Age">
         <xs:restriction base="xs:integer">
             <xs:minInclusive value="0" />
             <xs:maxInclusive value="130" />
         </xs:restriction>
     </xs:simpleType>
+    
     <xs:simpleType name="Address">
-        <xs:restriction base="xs:stringer">
+        <xs:restriction base="xs:string">
             <xs:whiteSpace value="preserve" />
         </xs:restriction>
     </xs:simpleType>
+    
     <xs:complexType name="Customer">
         <xs:sequence>
             <xs:element name="fname" type="tns:Name" />
@@ -34,7 +39,9 @@
             <xs:element name="address" type="tns:Address" />
             <xs:element name="email" type="tns:Email" />
         </xs:sequence>
-        <xs:attribute name="id" type="xs:string" />
+        
+        <xs:attribute name="id" type="xs:integer" />
     </xs:complexType>
-    <xs:element name="customer" type="Customer  ">
+    
+    <xs:element name="customer" type="Customer"/>
 </xs:schema>
