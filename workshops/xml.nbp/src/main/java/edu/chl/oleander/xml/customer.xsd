@@ -1,5 +1,40 @@
-<xsd:schema 
-  xmlns:xsd=""
-  xmlns:sql="urn:schemas-microsoft-com:mapping-schema"
-  xmlns:tns="" 
-  targetNamespace="http://edu.chl.oleander/schema/customer" >
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    targetNamespace="http://edu.chl.jesjos/schema/customer"
+    xmlns:tns="http://edu.chl.jesjos/schema/customer"
+    elementFormDefault="qualified">
+    <xs:simpleType name="Name">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Email">
+        <xs:restriction base="xs:string">
+            <xs:minLength value="6" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Age">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0" />
+            <xs:maxInclusive value="130" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Address">
+        <xs:restriction base="xs:stringer">
+            <xs:whiteSpace value="preserve" />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="Customer">
+        <xs:sequence>
+            <xs:element name="fname" type="tns:Name" />
+            <xs:element name="lname" type="tns:Name" />
+            <xs:element name="age" type="tns:Age" />
+            <xs:element name="address" type="tns:Address" />
+            <xs:element name="email" type="tns:Email" />
+        </xs:sequence>
+        <xs:attribute name="id" type="xs:string" />
+    </xs:complexType>
+    <xs:element name="customer" type="Customer  ">
+</xs:schema>
