@@ -21,5 +21,11 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+      <groupId>com.sun.jersey.experimental.hypermedia-action</groupId>
+      <artifactId>hypermedia-action-sample</artifactId>
+      <version>1.9-SNAPSHOT</version>
+      <type>jar</type>
+    </dependency>
   </dependencies>
 </project>
