@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : customerList.xml
+    Created on : den 1 september 2011, 15:50
+    Author     : linus
+    Description:
+        Purpose of the document follows.
+-->
+
+<ns1:customerList  xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+   xmlns:ns1='http://edu.chl.jesjos/schema/customerList'
+   xsi:schemaLocation='http://edu.chl.jesjos/schema/customerList file:/Users/linus/Documents/Projekt/DAT076/workshops/xml.nbp/src/main/java/edu/chl/oleander/xml/customerList.xsd' 
+   xmlns="http://edu.chl.jesjos/schema/customer"
+   >
+  
+    <ns1:li>
+      <fname>Linus</fname>
+      <lname>Oleander</lname>
+      <age>20</age>
+      <address>Motgången</address>
+      <email>linus@oleander.nu</email>
+    </ns1:li>
+    
+    <ns1:li>
+      <fname>Linus</fname>
+      <lname>Oleander</lname>
+      <age>20</age>
+      <address>Motgången</address>
+      <email>linus@oleander.nu</email>
+    </ns1:li>
+</ns1:customerList>
