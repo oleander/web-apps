@@ -6,6 +6,7 @@ package edu.chl.jesjos.webshop;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Arrays;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +29,11 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String action = request.getParameter("action");
+        String privatePath = "WEB-INF/jsp/";
+        String[] actions = {"shop", "pay", "cart", "removeProduct", "addProduct", "confirm"};
+        if (Arrays.asList(actions).contains(action))
+            request.getRequestDispatcher(privatePath + action + ".jspx").forward(request, response);            
         try {
             /* TODO output your page here
             out.println("<html>");
