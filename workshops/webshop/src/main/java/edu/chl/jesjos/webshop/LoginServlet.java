@@ -6,6 +6,8 @@ package edu.chl.jesjos.webshop;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,9 +18,13 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author jesper
  */
-@WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
+@WebServlet(name = "LoginServlet", urlPatterns = {"/auth"})
 public class LoginServlet extends HttpServlet {
 
+    private static final String LOGIN = "login";
+    private static final String LOGOUT = "logout";
+    private static final String REGISTER = "register";
+    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -30,19 +36,45 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String completeAction = Constants.HOMEPATH;
         try {
-            /* TODO output your page here
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-             */
-        } finally {            
-            out.close();
+            String action = request.getParameter("action");
+            String user = request.getParameter("login");
+            String password = request.getParameter("passwd");
+
+            if (action.equals(LOGIN)) {
+                User theUser = Database.getUser(user, password);
+                if (theUser != null) {
+                    /*
+                     * Login succeeded
+                     */
+                    request.getSession(true).setAttribute(Constants.USER, theUser);
+                } else {
+                    /*
+                     * Login failed
+                     */
+                    completeAction = Constants.REGISTERPATH;
+                }
+            }
+            else if (action.equals(LOGOUT)) {
+                request.getSession().invalidate();
+            }
+            else if (action.equals(REGISTER)) {
+                if (Database.addUser(user, password)) {
+                    /*
+                     * Registration succeeded
+                     */
+                    request.getSession(true).setAttribute(Constants.USER, Database.getUser(user, password));
+                } else {
+                    /*
+                     * Registration failed
+                     */
+                    completeAction = Constants.REGISTERPATH;
+                }
+                
+            }
+        } finally {
+            request.getRequestDispatcher(completeAction).forward(request, response);
         }
     }
 
@@ -81,4 +113,28 @@ public class LoginServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void doLogin(HttpServletRequest request, HttpServletResponse response) {
+        String user = request.getParameter("user");
+        String password = request.getParameter("passwd");
+        User theUser = Database.getUser(user, password);
+        try {
+            if (theUser != null) {
+                request.setAttribute("user", theUser);
+                request.getRequestDispatcher(Constants.HOMEPATH).forward(request, response);
+            } else {
+                request.getRequestDispatcher(Constants.REGISTERPATH).forward(request, response);
+            }
+        } catch (Exception e){
+            // Handle?
+        }
+    }
+
+    private void doLogout() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
+
+    private void doRegister() {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
 }

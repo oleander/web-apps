@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- 
-    Document   : cart
-    Created on : 2011-sep-09, 13:24:47
+    Document   : shop
+    Created on : 2011-sep-09, 13:27:48
     Author     : jesper
 -->
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
-
+    <jsp:output doctype-root-element="html"
+                doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+                doctype-system="http://www.w3c.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"/>
     <jsp:directive.page contentType="text/html" pageEncoding="UTF-8"/>
 
-    <!-- any content can be specified here, e.g.: -->
-    <jsp:element name="text">
-        <jsp:attribute name="lang">EN</jsp:attribute>
-        <jsp:body>My name is cart.jspx!</jsp:body>
-    </jsp:element>
-
+    <html>
+        <head>
+            <title>Webshop</title>
+            <link rel="stylesheet" href="/default.css" type="text/css" />
+        </head>
+        <body>
+            <jsp:include page="/WEB-INF/jsp/header.jspx" />
+            HEJSAN!!!!
+            <jsp:include page="/WEB-INF/jsp/footer.jspx" />
+        </body>
+    </html>
 </jsp:root>

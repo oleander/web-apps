@@ -26,6 +26,7 @@ public class Database {
         products.add(new Product("Apples", 13.30));
         products.add(new Product("Bananas", 14.40));
         products.add(new Product("Pears", 15.50));
+        users.add(new User("jesper", "apa"));
     }
 
     // Will not add users with same login

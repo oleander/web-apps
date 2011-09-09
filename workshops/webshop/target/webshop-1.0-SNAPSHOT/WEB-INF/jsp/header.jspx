@@ -11,7 +11,7 @@
         </div>
         <div class="menu">
             <ul>
-                <li><a href="/webshop">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="FrontController?action=shop">Shop</a></li>
                 <li><a href="FrontController?action=cart">View Cart</a></li>
                 <li><a href="FrontController?action=pay">Pay</a></li>

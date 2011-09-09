@@ -33,6 +33,8 @@ public class FrontController extends HttpServlet {
         String privatePath = "WEB-INF/jsp/";
         String[] actions = {"shop", "pay", "cart", "removeProduct", "addProduct", "confirm"};
         if (Arrays.asList(actions).contains(action))
+            if (action.equals("shop"))
+                request.getSession(true).setAttribute("products", Database.getProducts());
             request.getRequestDispatcher(privatePath + action + ".jspx").forward(request, response);            
         try {
             /* TODO output your page here
