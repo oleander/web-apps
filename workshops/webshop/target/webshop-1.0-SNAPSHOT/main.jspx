@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : main
+    Created on : May 16, 2011, 2:55:50 PM
+    Author     : hajo
+-->
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+    <jsp:output doctype-root-element="html"
+                doctype-public="-//W3C//DTD XHTML 1.0 Transitional//EN"
+                doctype-system="http://www.w3c.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"/>
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/> 
+    <html>
+        <head>
+            <link rel="stylesheet" href="default.css" type="text/css"/>
+        </head>
+        <body>
+            <jsp:include page="WEB-INF/jsp/header.jspx" />
+            <h1>main.jspx</h1>
+            <p>${requestScope['msg']}</p>
+            <a href="register.jspx">Register</a>
+            <form action="login" method="POST">
+                <input type="hidden" name="action" value="login"/>
+                <table>
+                    <tr>
+                        <td>Login</td>
+                        <td><input type="text" name="login"/><br/></td>
+                    </tr>
+                    <tr>
+                        <td>Password</td>
+                        <td><input type="text" name="passwd"/><br/></td>
+                    </tr>
+                </table> 
+               
+                <input type="submit" value="Login"/>      
+            </form>  
+             <jsp:include page="WEB-INF/jsp/footer.jspx"/>
+        </body>
+
+    </html>
+</jsp:root>

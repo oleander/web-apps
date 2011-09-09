@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+    Document   : footer
+    Created on : May 17, 2011, 10:41:32 AM
+    Author     : hajo
+-->
+<!--<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">-->
+    <div>
+        <hr/>
+        <p>Contact: info@mycom.com</p>
+    </div>
+<!---</jsp:root>-->

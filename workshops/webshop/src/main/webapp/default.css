@@ -1,0 +1,47 @@
+/* 
+    Document   : default
+    Created on : May 17, 2011, 10:56:32 AM
+    Author     : hajo
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+body {
+  font-family:  sans-serif;  
+}
+
+.menu{
+    width: 90%;
+    background-color: #333; }
+
+.menu ul{
+    margin: 0; padding: 0;
+    float: left;}
+ 
+.menu ul li{
+    display: inline;}
+ 
+.menu ul li a{
+    float: left; text-decoration: none;
+    color: white;
+    padding: 10.5px 11px;
+    background-color: #333; }
+ 
+.menu ul li a:visited{
+    color: white;}
+ 
+.menu ul li a:hover, .menu ul li .current{
+    color: #fff;
+    background-color:#0b75b2;}
+
+
+
