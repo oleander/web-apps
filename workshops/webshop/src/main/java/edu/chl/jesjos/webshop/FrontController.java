@@ -117,32 +117,42 @@ public class FrontController extends HttpServlet {
       String host = "smtp.gmail.com";
  
       // Get system properties
-      Properties properties = System.getProperties();
- 
-      // Setup mail server
-      properties.setProperty("mail.smtp.host", host);
-      properties.setProperty("mail.smtp.port", "587");
-      properties.setProperty("mail.smtp.auth", "true");
-      properties.setProperty("mail.user", "robject865");
-      properties.setProperty("mail.password", "596bdbab0a0c8836a2aa0f16d891");
-        Session session = Session.getDefaultInstance(properties);
- 
-      try{
-         // Create a default MimeMessage object.
-         MimeMessage message = new MimeMessage(session);
-         // Set From: header field of the header.
-         message.setFrom(new InternetAddress(from));
-         // Set To: header field of the header.
-         message.addRecipient(Message.RecipientType.TO,
-                                  new InternetAddress(recipient));
-         // Set Subject: header field
-         message.setSubject("Order Confirmation");
-         // Now set the actual message
-         message.setText(messageContent);
-         // Send message
-         Transport.send(message);
-      } catch(Exception e) {
-          log("My ERROR: " + e);
-      }
+//      Properties properties = System.getProperties();
+// 
+//      // Setup mail server
+//      properties.setProperty("mail.transport.protocol", "smtp");
+//      properties.setProperty("mail.smtp.host", host);
+//      
+//      properties.setProperty("mail.smtp.port", "587");
+//      properties.setProperty("mail.smtp.auth", "true");
+//      properties.setProperty("mail.user", "robject865");
+//      properties.setProperty("mail.password", "596bdbab0a0c8836a2aa0f16d891");
+      Properties props = new Properties();
+
+        props.put("mail.transport.protocol", "smtps");
+        props.put("mail.smtps.host", host);
+        props.put("mail.smtps.auth", "true");
+        // props.put("mail.smtps.quitwait", "false");
+        try {
+        Session mailSession = Session.getDefaultInstance(props);
+        mailSession.setDebug(true);
+        Session session = Session.getDefaultInstance(props);
+        Transport transport = session.getTransport();
+
+        MimeMessage message = new MimeMessage(mailSession);
+        message.setSubject("Confirmation");
+        message.setContent(messageContent, "text/plain");
+
+        message.addRecipient(Message.RecipientType.TO,
+             new InternetAddress(recipient));
+
+        transport.connect("smtp.gmail.com", 465, "robject865@gmail.com", "596bdbab0a0c8836a2aa0f16d891");
+
+        transport.sendMessage(message,
+            message.getRecipients(Message.RecipientType.TO));
+        transport.close();
+        } catch (Exception e) {
+            
+        }
     }
 }
