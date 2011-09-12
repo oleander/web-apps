@@ -16,12 +16,55 @@ root {
 }
 
 body {
-  font-family:  sans-serif;  
+  font-family:  sans-serif;
+  margin: 0;
+}
+
+.message p {
+  font-size: 20px;
+  margin: 0;
+  text-align: center;
 }
 
 .menu{
     width: 90%;
     background-color: #333; }
+
+.message {
+  z-index: 1000;
+  -webkit-background-size: 40px 40px;
+  -moz-background-size: 40px 40px;
+  background-size: 40px 40px;
+  background-image: -webkit-gradient(linear, left top, right bottom, color-stop(.25, rgba(255, 255, 255, .05)), color-stop(.25, transparent), color-stop(.5, transparent), color-stop(.5, rgba(255, 255, 255, .05)), color-stop(.75, rgba(255, 255, 255, .05)), color-stop(.75, transparent), to(transparent));  
+  background-image: -webkit-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%,transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%, transparent 75%, transparent);
+  background-image: -ms-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(135deg, rgba(255, 255, 255, .05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .05) 50%, rgba(255, 255, 255, .05) 75%, transparent 75%, transparent);
+  
+  -moz-box-shadow: inset 0 -1px 0 rgba(255,255,255,.4);
+  -webkit-box-shadow: inset 0 -1px 0 rgba(255,255,255,.4);
+  -webkit-animation: animate-bg 5s linear infinite;
+  -moz-animation: animate-bg 5s linear infinite;
+  box-shadow: inset 0 -1px 0 rgba(255,255,255,.4);
+  
+  width: 100%;
+  border: 1px solid;
+  color: #fff;
+  padding: 15px;
+  position: fixed;
+  _position: absolute;
+  text-shadow: 0 1px 0 rgba(0,0,0,.5);
+}
+
+.alert {
+  background-color: #eaaf51;
+  border-color: #d99a36;
+}
+
+.notice {
+  background-color: #61b832;
+  border-color: #55a12c;
+}
 
 .menu ul{
     margin: 0; padding: 0;
@@ -43,5 +86,7 @@ body {
     color: #fff;
     background-color:#0b75b2;}
 
-
+#productTable {
+    text-align: left;
+}
 

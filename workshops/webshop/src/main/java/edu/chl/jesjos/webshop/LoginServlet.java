@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -24,7 +25,8 @@ public class LoginServlet extends HttpServlet {
     private static final String LOGIN = "login";
     private static final String LOGOUT = "logout";
     private static final String REGISTER = "register";
-    
+    private static final String REGISTER_SUCCESS = "User was successfully created!";
+    private static final String REGISTER_FAILURE = "User registration failed, try again.";
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      * @param request servlet request
@@ -36,45 +38,58 @@ public class LoginServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String completeAction = Constants.HOMEPATH;
+        /*
+         * Default page for redirect.
+         */
+        String redirectPage = Constants.HOMEPATH;
+        HttpSession session = request.getSession();
+        Boolean valid = true;
         try {
             String action = request.getParameter("action");
             String user = request.getParameter("login");
             String password = request.getParameter("passwd");
-
             if (action.equals(LOGIN)) {
                 User theUser = Database.getUser(user, password);
                 if (theUser != null) {
                     /*
                      * Login succeeded
                      */
-                    request.getSession(true).setAttribute(Constants.USER, theUser);
+                    session.setAttribute(Constants.USER, theUser);
+                    Flash.setFlash("Login succeeded!", session);
                 } else {
                     /*
                      * Login failed
                      */
-                    completeAction = Constants.REGISTERPATH;
+                    Flash.setFlash("Login failed", session);
+                    redirectPage = Constants.REGISTERPATH;
                 }
             }
             else if (action.equals(LOGOUT)) {
-                request.getSession().invalidate();
+                session.invalidate();
+                redirectPage = Constants.HOMEPATH;
+                valid = false;
             }
             else if (action.equals(REGISTER)) {
-                if (Database.addUser(user, password)) {
+                boolean userDidGetCreated = Database.addUser(user, password);
+                if (userDidGetCreated) {
                     /*
                      * Registration succeeded
                      */
-                    request.getSession(true).setAttribute(Constants.USER, Database.getUser(user, password));
+                    Flash.setFlash("User registered!", session);
+                    session.setAttribute(Constants.USER, Database.getUser(user, password));
                 } else {
                     /*
                      * Registration failed
                      */
-                    completeAction = Constants.REGISTERPATH;
+                    Flash.setFlash("Registration failed, username most likely taken", session);
+                    redirectPage = Constants.REGISTERPATH;
                 }
                 
             }
         } finally {
-            request.getRequestDispatcher(completeAction).forward(request, response);
+            if (valid && session.getAttribute(Constants.USER) != null)
+                session.setAttribute(Constants.SHOPPINGCART, new ShoppingCart());
+            response.sendRedirect(redirectPage);
         }
     }
 

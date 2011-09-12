@@ -16,6 +16,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -44,6 +45,7 @@ public class AuthFilter implements Filter {
         
         // forward to main if user not logged in
         if (user == null) {
+            request.setAttribute(Constants.MSG, "Log in to access this content.");
             request.getRequestDispatcher("main.jspx").forward(request, response);
         }
     }   
@@ -84,6 +86,7 @@ public class AuthFilter implements Filter {
      * @exception IOException if an input/output error occurs
      * @exception ServletException if a servlet error occurs
      */
+    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
@@ -91,33 +94,41 @@ public class AuthFilter implements Filter {
         if (debug) {
             log("AuthFilter:doFilter()");
         }
-        
-        doBeforeProcessing(request, response);
-        
-        Throwable problem = null;
-        try {
+        HttpSession session = ((HttpServletRequest) request).getSession(true);
+        if(session.getAttribute(Constants.USER) == null) {
+            request.setAttribute(Constants.MSG, "Log in to access this content.");
+            request.getRequestDispatcher("main.jspx").forward(request, response);
+        } else {
             chain.doFilter(request, response);
-        } catch (Throwable t) {
-            // If an exception is thrown somewhere down the filter chain,
-            // we still want to execute our after processing, and then
-            // rethrow the problem after that.
-            problem = t;
-            t.printStackTrace();
         }
+            
         
-        doAfterProcessing(request, response);
-
-        // If there was a problem, we want to rethrow it if it is
-        // a known type, otherwise log it.
-        if (problem != null) {
-            if (problem instanceof ServletException) {
-                throw (ServletException) problem;
-            }
-            if (problem instanceof IOException) {
-                throw (IOException) problem;
-            }
-            sendProcessingError(problem, response);
-        }
+//        doBeforeProcessing(request, response);
+//        
+//        Throwable problem = null;
+//        try {
+//            chain.doFilter(request, response);
+//        } catch (Throwable t) {
+//            // If an exception is thrown somewhere down the filter chain,
+//            // we still want to execute our after processing, and then
+//            // rethrow the problem after that.
+//            problem = t;
+//            t.printStackTrace();
+//        }
+//        
+//        doAfterProcessing(request, response);
+//
+//        // If there was a problem, we want to rethrow it if it is
+//        // a known type, otherwise log it.
+//        if (problem != null) {
+//            if (problem instanceof ServletException) {
+//                throw (ServletException) problem;
+//            }
+//            if (problem instanceof IOException) {
+//                throw (IOException) problem;
+//            }
+//            sendProcessingError(problem, response);
+//        }
     }
 
     /**

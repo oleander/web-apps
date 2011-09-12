@@ -19,9 +19,24 @@
         </head>
         <body>
             <jsp:include page="/WEB-INF/jsp/header.jspx" />
-            <table>
+            <h1>shop.jspx</h1>
+            <table id="productTable">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
                 <c:forEach var="product" items="${products}">
-                    <tr><td>Name: ${product.name}</td><td>Price: ${product.price}</td></tr>
+                    <tr>
+                        <td>${product.name}</td>
+                        <td>${product.price}</td>
+                        <td>
+                            <form action="FrontController?action=addProduct" method="post">
+                                <input type="submit" Value="+1"/>
+                                <input type="hidden" name="name" value="${product.name}" />
+                            </form>
+                        </td>
+                    </tr>
                 </c:forEach>
             </table>
             <jsp:include page="/WEB-INF/jsp/footer.jspx" />

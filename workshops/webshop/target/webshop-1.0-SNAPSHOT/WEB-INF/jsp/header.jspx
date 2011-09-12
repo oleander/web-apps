@@ -4,7 +4,31 @@
     Created on : May 17, 2011, 10:26:27 AM
     Author     : hajo
 -->
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.0">
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          version="2.0">
+    <script type="text/javascript">
+        window.onload = function() {  
+            console.debug("loaded");
+            
+            var flash = document.getElementById('flash');
+            console.debug(flash.innerHTML.length);
+            if (flash.innerHTML.length === 29) {
+                
+                console.debug("should be invisible");
+                flash.style.display = "none";
+            } else if (flash) {
+                console.debug("");
+                flash.onclick = function (e) {this.style.display = "none"};
+            }
+        }
+    </script>
+    <div id="flash" class="notice message">
+        <p>
+            ${sessionScope['flash'].message}
+        </p>
+    </div>
+    
     <div>
         <div>
             <img alt="logo" src="img/banner.jpg" width="90%"/><br/>
@@ -15,7 +39,7 @@
                 <li><a href="FrontController?action=shop">Shop</a></li>
                 <li><a href="FrontController?action=cart">View Cart</a></li>
                 <li><a href="FrontController?action=pay">Pay</a></li>
-                <li><a href="/webshop/login?action=logout">Logout</a></li> 
+                <li><a href="auth?action=logout">Logout</a></li> 
             </ul>
             <br style="clear:left"/>
         </div>

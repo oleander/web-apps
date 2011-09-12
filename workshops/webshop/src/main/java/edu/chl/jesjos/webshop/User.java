@@ -15,6 +15,8 @@ public class User {
     // TODO private final String email;
 
     public User(String login, String passwd) {
+        if (login == null || login.isEmpty())
+            throw new NullPointerException("Login cannot be null or empty");
         this.login = login;
         this.passwd = passwd;
     }

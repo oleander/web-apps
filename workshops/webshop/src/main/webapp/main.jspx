@@ -16,7 +16,7 @@
         <body>
             <jsp:include page="WEB-INF/jsp/header.jspx" />
             <h1>main.jspx</h1>
-            <p>${requestScope['msg']}</p>
+            <!-- p>${requestScope['msg']}</p -->
             <a href="register.jspx">Register</a>
             <form action="auth" method="POST">
                 <input type="hidden" name="action" value="login"/>
@@ -27,7 +27,7 @@
                     </tr>
                     <tr>
                         <td>Password</td>
-                        <td><input type="text" name="passwd"/><br/></td>
+                        <td><input type="password" name="passwd"/><br/></td>
                     </tr>
                 </table> 
                
