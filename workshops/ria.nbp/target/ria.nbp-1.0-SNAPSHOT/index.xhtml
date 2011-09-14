@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" href="default.css" type="text/css"/>
+        <script type="text/javascript" src="js/flash.js" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" />
+        <script type="text/javascript" src="js/jquery.xcolor.min.js" />
+        <script type="text/javascript" src="js/rgb.js" />
+        <!-- script type="text/javascript" src="js/darken.js" /-->
+        <!-- script type="text/javascript" src="js/lighten.js" /-->
+        <script type="text/javascript" src="js/darken_jq.js" />
+        <script type="text/javascript" src="js/lighten_jq.js" />
+        <script type="text/javascript" src="js/menu.js" />
+        <!--script>
+            var onLoad = function () {
+                Lighten.lightenElement("content_wrapper"); 
+                Darken.darkenElement("menu_wrapper");
+            }
+        </script-->
+        <title>Amazing app</title>
+    </head>
+    <body>
+        <div id="menu_wrapper">
+            <ul id="menu_list">
+                <li id="fruits">Fruits</li>
+                <li id="vegetables">Vegetables</li>
+                <li id="nuts">Nuts</li>
+            </ul>
+            <div id="pic">
+                 
+            </div>
+        </div>
+        <div id="content_wrapper">
+            <div id="content">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                    Donec malesuada mi id quam elementum eu ornare purus aliquet. 
+                    Nulla vehicula convallis lacus, sed feugiat risus adipiscing sed. 
+                    Nullam eget consectetur odio. Maecenas bibendum, mi ac tempus consequat, 
+                    ipsum libero dignissim dolor, et ultrices arcu risus sed ipsum. 
+                    Aenean ultricies fermentum pretium. Duis accumsan augue sed est hendrerit vestibulum. 
+                    Sed consequat, mi a eleifend sodales, nisl nisl vulputate est, 
+                    gravida interdum velit nisi a diam. Sed vel lacus est, sed porta sapien. 
+                    Morbi et est tortor. Sed ligula nisl, rhoncus congue blandit ac, vehicula pharetra quam. 
+                    Praesent sollicitudin rutrum augue, nec porta purus sodales et. 
+                    Ut tincidunt dolor vitae ipsum tincidunt scelerisque. 
+                    Ut dolor risus, luctus quis tempor lacinia, interdum a magna. 
+                    Morbi in cursus odio.
+                </p>
+            </div>
+        </div>
+        <div id="button_container">
+            <input id="flash" type="button" value="Start unobtrusive flash" name="flash" onclick="Flasher.flash('content_wrapper')"/>
+        </div>
+        <div class="dropdown_container" id="dropdown_fruits"></div>
+        <div class="dropdown_container" id="dropdown_vegetables"></div>
+        <div class="dropdown_container" id="dropdown_nuts"></div>
+    </body>
+</html>
