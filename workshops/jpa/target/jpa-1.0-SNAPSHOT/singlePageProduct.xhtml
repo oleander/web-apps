@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"/> 
+        <script type="text/javascript" src="js/product.js"/> 
+        <title>singlePageProduct.xhtml</title>
+    </head>
+    <body>
+        <h1>Products</h1>
+        <input id="btnAdd" type="button" value="Add"/><br/>
+        <input id="btnPrev" type="button" value="&lt;"/>
+        <input id="btnNext" type="button" value="&gt;"/><br/> 
+        <div>
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Name</td>
+                        <td>Category</td>
+                        <td>Price</td>
+                    </tr>
+                </thead>
+                <tbody id="productTableBody"></tbody>
+            </table>
+            <div id="dialog" ></div>
+        </div>
+    </body>
+</html>
