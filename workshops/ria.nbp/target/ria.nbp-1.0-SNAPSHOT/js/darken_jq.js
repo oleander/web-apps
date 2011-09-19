@@ -1,5 +1,5 @@
 $(function() {
-    DarkenJQ.darkenElement('content_wrapper');
+    DarkenJQ.darkenElement('menu_wrapper');
 });
 
 var DarkenJQ = {

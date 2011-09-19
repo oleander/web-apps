@@ -1,5 +1,5 @@
 $(function() {
-    LightenJQ.lightenElement('menu_wrapper');
+    LightenJQ.lightenElement('content_wrapper');
 });
 
 var LightenJQ = {
