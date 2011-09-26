@@ -15,8 +15,10 @@ public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(nullable=false)
     private String name;
     private String category;
+    @Column(nullable=false)
     private Double price;
 
     public Product() {
@@ -84,6 +86,27 @@ public class Product implements Serializable {
     public void setPrice(Double price) {
         this.price = price;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof Product) {
+            Product other = (Product) o;
+            return
+                    this.getName().equals(other.getName()) && this.getPrice() == other.getPrice();
+        }
+        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 29 * hash + (int) (this.id ^ (this.id >>> 32));
+        hash = 29 * hash + (this.name != null ? this.name.hashCode() : 0);
+        hash = 29 * hash + (this.price != null ? this.price.hashCode() : 0);
+        return hash;
+    }
+    
+    
     
     @Override
     public String toString() {

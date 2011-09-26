@@ -6,6 +6,8 @@ package edu.chl.jesjos.jpa.db;
 
 import edu.chl.jesjos.jpa.core.Product;
 import edu.chl.jesjos.jpa.IJpaCtrl;
+import edu.chl.jesjos.jpa.ProductJpaCtrl;
+import edu.chl.jesjos.jpa.ProductJpaDummyCtrl;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -25,6 +27,6 @@ public final class Database {
     }
     
     public static IJpaCtrl<Product> getProductController() {
-        return null; //productCtrl;
+        return new ProductJpaCtrl(emf); //productCtrl;
     }
 }

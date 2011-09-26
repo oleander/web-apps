@@ -42,6 +42,8 @@ public class PersistServlet extends HttpServlet {
             if(request.getServletPath().contains("PersistServlet")) {
                 EntityTransaction tx = m.getTransaction();
                 Product p = new Product();
+                p.setName("Car");
+                p.setPrice(2000.0);
                 tx.begin();
                 m.persist(p);
                 tx.commit();

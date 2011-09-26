@@ -21,30 +21,35 @@ import static org.junit.Assert.*;
  * @author jesper
  */
 public class ProductTest {
-    private EntityManagerFactory mf;
-    private EntityManager m;
+    private static EntityManagerFactory mf;
+    private static EntityManager m;
+    private Product p;
     
     public ProductTest() {
     }
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        mf = Persistence.createEntityManagerFactory("webshop_pu");
+        m = mf.createEntityManager();
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+        m.close();
+        mf.close();
     }
     
     @Before
     public void setUp() {
-        mf = Persistence.createEntityManagerFactory("webshop_test_pu");
-        m = mf.createEntityManager();
+        p = new Product();
+        p.setCategory("Vehicles");
+        p.setName("Car");
+        p.setPrice(3000.0);
     }
     
     @After
     public void tearDown() {
-        m.close();
-        mf.close();
     }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
@@ -53,16 +58,28 @@ public class ProductTest {
     // public void hello() {}
     
     @Test
-    public void test1() {
-        Product p = new Product();
-        p.setId(3000);
+    public void crud() {
         try {
-        m.getTransaction().begin();
-        m.persist(p);
-        m.getTransaction().commit();
+            m.getTransaction().begin();
+            m.persist(p);
+            m.getTransaction().commit();
         } catch(Exception e) {
             fail("Caught exception: " + e);
         }
-        
+        m.getTransaction().begin();
+        p.setPrice(265.2);
+        p.setName("Car");
+        long id = (long) p.getId();
+        m.getTransaction().commit();
+        p = null;
+        p = m.find(Product.class, id);
+        System.out.println("After nulling" + p);
+        m.getTransaction().begin();
+        m.remove(p);
+        m.getTransaction().commit();
+        p = null;
+        p = m.find(Product.class, id);
+        if (p != null)
+            fail("p should be null");
     }
 }

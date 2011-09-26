@@ -4,7 +4,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated("EclipseLink - Mon Sep 19 11:29:44 CEST 2011")
+@Generated("EclipseLink - Fri Sep 23 14:03:26 CEST 2011")
 @StaticMetamodel(Product.class)
 public class Product_ { 
 

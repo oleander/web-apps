@@ -18,7 +18,11 @@ public class Address implements Serializable {
     public Address () {
         
     }
-
+    public Address(String street, String city, String country) {
+        this.street = street;
+        this.city = city;
+        this.country = country;
+    }
     /**
      * @return the street
      */

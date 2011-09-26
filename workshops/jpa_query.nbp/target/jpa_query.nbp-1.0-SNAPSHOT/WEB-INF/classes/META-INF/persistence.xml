@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+  <persistence-unit name="sample_pu" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>edu.chl.jesjos.jpa_query.nbp.core.Manufacturer</class>
+    <class>edu.chl.jesjos.jpa_query.nbp.core.ProductCode</class>
+    <class>edu.chl.jesjos.jpa_query.nbp.core.DiscountCode</class>
+    <class>edu.chl.jesjos.jpa_query.nbp.core.Customer</class>
+    <class>edu.chl.jesjos.jpa_query.nbp.core.MicroMarket</class>
+    <class>edu.chl.jesjos.jpa_query.nbp.core.Product</class>
+    <class>edu.chl.jesjos.jpa_query.nbp.core.PurchaseOrder</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/sample"/>
+      <property name="javax.persistence.jdbc.password" value="app"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
+      <property name="javax.persistence.jdbc.user" value="app"/>
+    </properties>
+  </persistence-unit>
+</persistence>

@@ -17,6 +17,7 @@ public class OrderItem implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(nullable=false)
     private int quantity;
     @OneToOne
     private Product product;

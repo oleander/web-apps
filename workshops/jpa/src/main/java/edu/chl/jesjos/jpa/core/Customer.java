@@ -5,6 +5,7 @@
 package edu.chl.jesjos.jpa.core;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 /**
@@ -16,16 +17,18 @@ public class Customer implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(nullable=false)
     private String fname;
+    @Column(nullable=false)
     private String lname;
     private String email;
     @Embedded
     private Address address;
-    @OneToMany
+    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
     private List<PurchaseOrder> purchaseOrders;
     
     public Customer() {
-        
+        purchaseOrders = new ArrayList<PurchaseOrder>();   
     }
 
     /**
@@ -109,6 +112,18 @@ public class Customer implements Serializable {
         this.purchaseOrders = purchaseOrders;
     }
     
+    public void addPurchaseOrder(PurchaseOrder p) {
+        boolean add = this.purchaseOrders.add(p);
+    }
     
+    @Override
+    public String toString() {
+        String output = this.fname + " " + this.lname + " - " + this.email;
+        for (PurchaseOrder po : this.purchaseOrders) {
+            output += "\n" + po.toString();
+        }
+        
+        return output;
+    }
     
 }
