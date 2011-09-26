@@ -8,7 +8,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated("EclipseLink - Fri Sep 23 14:03:26 CEST 2011")
+@Generated("EclipseLink - Mon Sep 26 15:27:03 CEST 2011")
 @StaticMetamodel(PurchaseOrder.class)
 public class PurchaseOrder_ { 
 

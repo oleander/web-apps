@@ -24,7 +24,7 @@ public class Customer implements Serializable {
     private String email;
     @Embedded
     private Address address;
-    @OneToMany(cascade={CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy="customer",cascade={CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
     private List<PurchaseOrder> purchaseOrders;
     
     public Customer() {

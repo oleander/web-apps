@@ -60,19 +60,42 @@ var product = function (){
         edit: function(){ 
            var p = productView.getProductFromDialog();
             productView.hideDialog();
-            // TODO AJAx call
+            console.debug(p);
+            p.action = "edit";
+            $.post(
+                "/product",
+                p,
+                function (data) {
+                    product.find();
+                }
+            );
         },
         
         del : function (){
+            console.debug("Nu har någon klickat!!!");
            var p = productView.getProductFromDialog();
             productView.hideDialog();
-            // TODO AJax call
+            p.action = "del";
+            $.post(
+                "/product",
+                p,
+                function (data) {
+                    product.find();
+                }
+            );
         },
         
         add : function(){
             var p = productView.getProductFromDialog();
             productView.hideDialog();
-            // TODO AJAX call
+            p.action="add";
+            $.post(
+                "/product",
+                p,
+                function (data) {
+                    product.find();
+                }
+            );
         }
     } 
 }(); 
@@ -111,7 +134,7 @@ var productView = function(){
             product.each( function(){
                 var id = $(this).find('id').text();
                 var name = $(this).find('name').text();
-                var cat = $(this).find('cat').text();
+                var cat = $(this).find('category').text();
                 var price = $(this).find('price').text();             
                 var row = "<tr id='" + id + "'><td>" + id + "</td><td>" + name  + 
                 "</td><td>" + cat + "</td><td>" + price + 
