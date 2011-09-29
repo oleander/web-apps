@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/pageTemplate.xhtml">
+            <ui:param name="pageTitle" value="View Products"></ui:param>
+            <ui:param name="pageHeader" value="viewProducts.xhtml"></ui:param>
+            <ui:define name="content">
+                <h:form>
+                    <h:button value="Add Product"></h:button>
+                    <h:commandButton id="viewCart" value="View Cart" action="onViewCart" />
+                    <h:button value="Empty cart"></h:button>
+                    <h:outputText value="#{CartSessionBean.itemCount}"></h:outputText>
+                </h:form>
+                Content!
+            </ui:define>
+
+        </ui:composition>
+    </h:body>
+</html>
+

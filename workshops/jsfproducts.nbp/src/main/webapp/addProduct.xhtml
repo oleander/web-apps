@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+    </h:head>
+    <h:body>
+        <ui:composition template="./WEB-INF/pageTemplate.xhtml">
+            <ui:param name="pageTitle" value="Add Product"></ui:param>
+            <ui:param name="pageHeader" value="addProduct.xhtml"></ui:param>
+            <ui:define name="content">
+                <h1>addProduct.jsf</h1>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputLabel for="name">Product name</h:outputLabel>
+                        <h:inputText id="name" title="Product name" value="#{addProductRequestBean.name}">Product Name</h:inputText>
+                        <h:outputLabel>Product category</h:outputLabel>
+                        <h:inputText id="cat" title="Product category" value="#{addProductRequestBean.category}"></h:inputText>
+                        <h:outputLabel>Price</h:outputLabel>
+                        <h:inputText id="price" title="Product price" value="#{addProductRequestBean.price}"></h:inputText>                                
+                        <h:commandButton value="Submit" action="#{addProductControllerBean.addProduct}" />
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
