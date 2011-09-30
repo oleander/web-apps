@@ -8,6 +8,7 @@ import edu.chl.jesjos.jsfproducts.IJpaCtrl;
 import edu.chl.jesjos.jsfproducts.Product;
 import edu.chl.jesjos.jsfproducts.ProductJpaCtrl;
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.faces.bean.ManagedBean;
@@ -42,5 +43,9 @@ public class ProductPersistBean implements Serializable {
     
     public IJpaCtrl<Product> getProductController() {
         return prodctrl;
+    }
+    
+    public List<Product> getProducts() {
+        return prodctrl.findEntities();
     }
 }

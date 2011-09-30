@@ -18,6 +18,7 @@
         <navigation-case>
             <from-outcome>onAddProduct</from-outcome>
             <to-view-id>/viewProducts.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>

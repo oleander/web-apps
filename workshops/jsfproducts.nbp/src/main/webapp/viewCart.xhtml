@@ -13,7 +13,7 @@
             <ui:define name="content">
                 <h:form>
                     <h:commandButton value="View Products" action="viewProducts"></h:commandButton>
-                    <h:commandButton value="Empty Shopping Cart" action="#{cartSessionBean.emptyCart}"></h:commandButton>
+                    <h:commandButton value="Empty Shopping Cart" action="#{viewCartControllerBean.emptyCart}"></h:commandButton>
                     <h:outputText value="#{CartSessionBean.itemCount}"></h:outputText>
                 </h:form>
             </ui:define>

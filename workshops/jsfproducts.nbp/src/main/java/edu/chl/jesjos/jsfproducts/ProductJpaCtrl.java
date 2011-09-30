@@ -6,6 +6,7 @@ package edu.chl.jesjos.jsfproducts;
 
 import edu.chl.jesjos.jsfproducts.jpactrl.exceptions.NonexistentEntityException;
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -42,10 +43,12 @@ public class ProductJpaCtrl implements IJpaCtrl<Product> {
     @Override
     public void create(Product t) {
         try {
+            System.err.print("Trying to persist product: " + t);
             utx.begin();
             em.persist(t);
             utx.commit();
         } catch (Exception e) {
+            System.err.println("Fel vid skapande av product" + e.getMessage());
         }
     }
 

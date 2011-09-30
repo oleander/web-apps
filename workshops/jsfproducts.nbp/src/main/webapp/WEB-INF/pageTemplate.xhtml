@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -39,8 +40,13 @@
         </div>
 
         <div id="bottom">
-            This is a nice little webshop. Contact us by screaming into the wind.
-            <h:outputText value="#{dateTimeApplicationBean.currentDateTime}" styleClass="footer"></h:outputText>
+            <h:form>
+                <h:commandButton value="Update footer">
+                    <f:ajax render="time"></f:ajax>
+                </h:commandButton>
+                This is a nice little webshop. Contact us by screaming into the wind.
+                <h:outputText id="time" value="#{dateTimeApplicationBean.currentDateTime}" styleClass="footer"></h:outputText>
+            </h:form>
         </div>
 
     </h:body>

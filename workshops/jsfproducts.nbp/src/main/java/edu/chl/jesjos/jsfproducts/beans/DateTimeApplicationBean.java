@@ -21,11 +21,13 @@ public class DateTimeApplicationBean {
     DateFormat df;
     /** Creates a new instance of DateTimeApplicationBean */
     public DateTimeApplicationBean() {
-        cal = Calendar.getInstance();
-        df = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, Locale.getDefault());
+        
     }
     
     public String getCurrentDateTime() {
+        cal = Calendar.getInstance();
+        System.out.println("Get time!" + cal.getTime());
+        df = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, Locale.getDefault()); 
         return df.format(cal.getTime());
     }
 }

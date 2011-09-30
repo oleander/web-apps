@@ -13,10 +13,10 @@ import javax.faces.bean.RequestScoped;
  */
 @ManagedBean
 @RequestScoped
-public class viewCartRequestBean {
+public class ViewCartRequestBean {
     
     /** Creates a new instance of viewCartRequestBean */
-    public viewCartRequestBean() {
+    public ViewCartRequestBean() {
     }
     
 }

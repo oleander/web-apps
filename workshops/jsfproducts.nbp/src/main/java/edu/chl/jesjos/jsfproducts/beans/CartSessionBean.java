@@ -24,10 +24,19 @@ public class CartSessionBean implements Serializable {
     }
     
     public int getItemCount() {
+        System.err.println("Getting item count: " + products.size());
         return products.size();
     }
     
     public void emptyCart() {
         products = new ArrayList<Product>();
+    }
+    
+    public void addProduct(Product p) {
+        products.add(p);
+    }
+    
+    public boolean removeProduct(Product p) {
+        return products.remove(p);
     }
 }

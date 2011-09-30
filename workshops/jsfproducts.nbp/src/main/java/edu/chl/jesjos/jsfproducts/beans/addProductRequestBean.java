@@ -11,14 +11,14 @@ import javax.faces.bean.RequestScoped;
  *
  * @author jesper
  */
-@ManagedBean
+@ManagedBean(name="addProductRequestBean")
 @RequestScoped
-public class addProductRequestBean {
+public class AddProductRequestBean {
     private String name;
     private String category;
     private Double price;
     /** Creates a new instance of addProductRequestBean */
-    public addProductRequestBean() {
+    public AddProductRequestBean() {
     }
 
     /**

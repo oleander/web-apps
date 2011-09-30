@@ -4,7 +4,10 @@
  */
 package edu.chl.jesjos.jsfproducts.beans;
 
+import edu.chl.jesjos.jsfproducts.Product;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 
 /**
@@ -13,9 +16,24 @@ import javax.faces.bean.RequestScoped;
  */
 @ManagedBean
 @RequestScoped
-public class viewProductsRequestBean {
-
+public class ViewProductsRequestBean {
+    @ManagedProperty(value="#{pdb.all}")
+    private List<Product> products;
     /** Creates a new instance of viewProductsRequestBean */
-    public viewProductsRequestBean() {
+    public ViewProductsRequestBean() {
+    }
+
+    /**
+     * @return the products
+     */
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    /**
+     * @param products the products to set
+     */
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

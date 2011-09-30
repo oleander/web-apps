@@ -3,7 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:c="http://java.sun.com/jsp/jstl/core">
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
     </h:head>
     <h:body>
@@ -11,15 +13,51 @@
             <ui:param name="pageTitle" value="View Products"></ui:param>
             <ui:param name="pageHeader" value="viewProducts.xhtml"></ui:param>
             <ui:define name="content">
-                <h:form>
-                    <h:button value="Add Product"></h:button>
-                    <h:commandButton id="viewCart" value="View Cart" action="onViewCart" />
-                    <h:button value="Empty cart"></h:button>
-                    <h:outputText value="#{CartSessionBean.itemCount}"></h:outputText>
-                </h:form>
-                Content!
+                <p:outputPanel id="productList">
+                    <h:form id="productForm">
+                        <h:commandButton value="Add Product" action="onViewAddProduct"></h:commandButton>
+                        <h:commandButton id="viewCart" value="View Cart" action="onViewCart" />
+                        <h:commandButton value="Empty cart" action="#{viewProductsControllerBean.emptyCart}"></h:commandButton>
+                        <h:outputText id="itemCount" value="Items in cart: #{cartSessionBean.itemCount}"></h:outputText>
+                        <p:dataTable value="#{viewProductsRequestBean.products}" var="product">
+                            <p:column sortBy="#{product.name}">
+                                <f:facet name="header">
+                                    <h:outputText value="Name" />
+                                </f:facet>
+                                <h:outputText value="#{product.name}" />
+                            </p:column>
+                            <p:column sortBy="#{product.category}">
+                                <f:facet name="header">
+                                    <h:outputText value="Category">
+                                    </h:outputText>
+                                </f:facet>
+                                <h:outputText value="#{product.category}"></h:outputText>
+                            </p:column>
+                            <p:column sortBy="#{product.price}">
+                                <f:facet name="header">
+                                    <h:outputText value="Price">
+                                    </h:outputText>
+                                </f:facet>
+                                <h:outputText value="#{product.price}"></h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                </f:facet>
+                                <p:commandButton value="Delete product" ajax="true" update="productList" actionListener="#{viewProductsControllerBean.deleteListener}">
+                                    <f:attribute name="productId" value="#{product.id}" />
+                                </p:commandButton>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                </f:facet>
+                                <p:commandButton value="Add to cart" ajax="true" update="productForm:itemCount" actionListener="#{viewProductsControllerBean.addToCartListener}">
+                                    <f:attribute name="productId" value="#{product.id}" />
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </h:form>
+                </p:outputPanel>
             </ui:define>
-
         </ui:composition>
     </h:body>
 </html>
