@@ -4,11 +4,14 @@
  */
 package edu.chl.jesjos.jsfproducts.beans;
 
+import edu.chl.jesjos.jsfproducts.Product;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import javax.servlet.http.HttpSession;
+import org.primefaces.component.commandbutton.CommandButton;
 
 /**
  *
@@ -34,6 +37,12 @@ public class ViewCartControllerBean {
         session.invalidate();
         return "onViewProducts";
         
+    }
+    
+    public void removeListener (ActionEvent e) {
+        CommandButton b = (CommandButton) e.getSource();
+        Product p = (Product) b.getAttributes().get("product");
+        cart.removeProduct(p);
     }
 
     /**

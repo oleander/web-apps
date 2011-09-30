@@ -11,6 +11,7 @@
         <navigation-case>
             <from-outcome>onViewProducts</from-outcome>
             <to-view-id>/viewProducts.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
@@ -30,6 +31,7 @@
         <navigation-case>
             <from-outcome>onEmptyCart</from-outcome>
             <to-view-id>/viewProducts.xhtml</to-view-id>
+            <redirect/>
         </navigation-case>
         <navigation-case>
             <from-outcome>onViewCart</from-outcome>

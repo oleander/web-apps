@@ -24,19 +24,33 @@ public class CartSessionBean implements Serializable {
     }
     
     public int getItemCount() {
-        System.err.println("Getting item count: " + products.size());
-        return products.size();
+        System.err.println("Getting item count: " + getProducts().size());
+        return getProducts().size();
     }
     
     public void emptyCart() {
-        products = new ArrayList<Product>();
+        setProducts(new ArrayList<Product>());
     }
     
     public void addProduct(Product p) {
-        products.add(p);
+        getProducts().add(p);
     }
     
     public boolean removeProduct(Product p) {
-        return products.remove(p);
+        return getProducts().remove(p);
+    }
+
+    /**
+     * @return the products
+     */
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
+
+    /**
+     * @param products the products to set
+     */
+    public void setProducts(ArrayList<Product> products) {
+        this.products = products;
     }
 }

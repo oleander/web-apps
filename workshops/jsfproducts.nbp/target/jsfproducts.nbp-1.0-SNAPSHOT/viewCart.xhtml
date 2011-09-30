@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
     </h:head>
     <h:body>
@@ -11,10 +13,29 @@
             <ui:param name="pageHeader" value="viewCart.xhtml"></ui:param>
 
             <ui:define name="content">
-                <h:form>
+                <h:form id="productList">
                     <h:commandButton value="View Products" action="viewProducts"></h:commandButton>
                     <h:commandButton value="Empty Shopping Cart" action="#{viewCartControllerBean.emptyCart}"></h:commandButton>
                     <h:outputText value="#{CartSessionBean.itemCount}"></h:outputText>
+                    <p:dataTable value="#{cartSessionBean.products}" var="product">
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Name" />
+                            </f:facet>
+                            <h:outputText value="#{product.name}" />
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Price" />
+                            </f:facet>
+                            <h:outputText value="#{product.price}" />
+                        </p:column>
+                        <p:column>
+                            <p:commandButton ajax="true" actionListener="#{viewCartControllerBean.removeListener}" update="productList" value="Remove from cart">
+                                <f:attribute name="product" value="#{product}" />
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
                 </h:form>
             </ui:define>
         </ui:composition>
